@@ -1,0 +1,6 @@
+cadmium
+numpy
+networkx
+pygcode
+more_itertools
+toolz

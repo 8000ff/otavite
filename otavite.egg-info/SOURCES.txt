@@ -1,0 +1,14 @@
+LICENSE
+setup.py
+otavite/__init__.py
+otavite/boring.py
+otavite/contouring.py
+otavite/pocketing.py
+otavite/proc.py
+otavite/solver.py
+otavite/util.py
+otavite.egg-info/PKG-INFO
+otavite.egg-info/SOURCES.txt
+otavite.egg-info/dependency_links.txt
+otavite.egg-info/requires.txt
+otavite.egg-info/top_level.txt

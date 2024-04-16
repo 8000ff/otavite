@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: otavite
+Version: 0.1
+Summary: A simple cadmium library for generating jobs and solving the into gcode
+License: GNU
+License-File: LICENSE
