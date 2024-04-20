@@ -22,6 +22,8 @@ def rectangular_pocket_AB(
     ab,ba = b-a,a-b
     focus_offset = np.fmax([0,0],[ba[0]-ba[1],ba[1]-ba[0]])/2
     focus = a[:2] + ab[:2]/2 - focus_offset, a[:2] + ab[:2]/2 + focus_offset
+    # dirty patch
+    last = None
     for pz,z in pairwise(passes(a[2],b[2],step_down)):
         yield LinearCut([*focus[0],pz],[*focus[0],z])
         yield LinearCut([*focus[0],z],[*focus[1],z])
@@ -30,10 +32,15 @@ def rectangular_pocket_AB(
             corner = focus[1] + np.array([xy,xy])
             ocorner = focus[0] - np.array([xy,xy])
             yield LinearCut([*pcorner,z],[*corner,z])
-            ps = yield from ( LinearCut(i,j) for i,j in pairwise([
+            yield from ( LinearCut(i,j) for i,j in pairwise([
                 [corner[0],corner[1],z],
                 [corner[0],ocorner[1],z],
                 [ocorner[0],ocorner[1],z],
                 [ocorner[0],corner[1],z],
                 [corner[0],corner[1],z]
             ]))
+            last = (corner[0],corner[1],z)
+        if z == b[2]:
+            yield LinearCut(last,(*(a[:2]+ab[:2]/2),a[2]))
+        else:
+            yield LinearCut(last,(*focus[0],z))
