@@ -1,6 +1,6 @@
 from itertools import product
 from more_itertools import pairwise
-from cadmium.data import Tool,LinearCut,ArcCut
+from cadmium.data import CuttingTool,LinearCut,ArcCut
 from .util import passes
 
 
@@ -8,7 +8,7 @@ def onion_boring(
         bore_center,
         bore_diameter,
         bore_depth,
-        tool : Tool,
+        tool : CuttingTool,
         step_down,
         step_over,
 ):
@@ -30,7 +30,7 @@ def helical_boring(
         bore_center,
         bore_diameter,
         bore_depth,
-        tool : Tool,
+        tool : CuttingTool,
         step_down,
 ):
     assert step_down > 0

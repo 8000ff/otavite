@@ -78,7 +78,7 @@ def solve(
             if u.tool != v.tool:
                 yield GCodeStopSpindle()
                 yield from machine.useTool(v.tool)
-            if d != None:
+            if d != {}:
                 yield GCodeStopSpindle()
                 yield from machine.park()
         if isinstance(v,CuttingOperation):
